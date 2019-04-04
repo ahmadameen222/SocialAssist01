@@ -166,12 +166,12 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                 return;
             }
         });
-       /* mSettings.setOnClickListener(new View.OnClickListener() {
+        mSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DriverMapActivity.this, DriverSettingsActivity.class);
-                startActivity(intent);
-                return;
+                //Intent intent = new Intent(DriverMapActivity.this, DriverSettingsActivity.class);
+                //startActivity(intent);
+                //return;
             }
         });
         mHistory.setOnClickListener(new View.OnClickListener() {
@@ -182,7 +182,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                 startActivity(intent);
                 return;
             }
-        });*/
+        });
         getAssignedCustomer();
     }
 

@@ -186,19 +186,19 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent intent = new Intent(CustomerMapActivity.this, CustomerSettingsActivity.class);
-               // startActivity(intent);
-               // return;
+                Intent intent = new Intent(CustomerMapActivity.this, CustomerSettingsActivity.class);
+                startActivity(intent);
+                return;
             }
         });
 
         mHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent intent = new Intent(CustomerMapActivity.this, HistoryActivity.class);
-              //  intent.putExtra("customerOrDriver", "Customers");
-              //  startActivity(intent);
-              //  return;
+               Intent intent = new Intent(CustomerMapActivity.this, HistoryActivity.class);
+               intent.putExtra("customerOrDriver", "Customers");
+               startActivity(intent);
+               return;
             }
         });
 
