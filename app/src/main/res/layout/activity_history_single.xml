@@ -7,7 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HistorySingleActivity"
+    android:background="@drawable/bridge"
     android:orientation="vertical">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,18 +30,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="From - To"
+                android:textColor="#FFFF"
                 android:layout_marginBottom="20sp"
                 android:id="@+id/rideLocation"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="distance"
+                android:textColor="#FFFF"
                 android:layout_marginBottom="20sp"
                 android:id="@+id/rideDistance"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="date"
+                android:textColor="#FFFF"
                 android:layout_marginBottom="20sp"
                 android:id="@+id/rideDate"/>
         </LinearLayout>
@@ -63,12 +68,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="name"
+                    android:textColor="#FFFF"
                     android:layout_marginBottom="20sp"
                     android:id="@+id/userName"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="phone"
+                    android:textColor="#FFFF"
                     android:layout_marginBottom="20sp"
                     android:id="@+id/userPhone"/>
             </LinearLayout>
@@ -80,12 +87,14 @@
             android:layout_gravity="center"
             android:numStars="5"
             android:stepSize="1"
+            android:textColor="#FFFF"
             android:visibility="gone"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/pay"
             android:text="Pay Here"
+            android:textColor="#FFFF"
             android:visibility="gone"
             android:enabled="false"/>
     </LinearLayout>

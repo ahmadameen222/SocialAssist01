@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#7c7c7c</color>
     <color name="colorAccent">#D81B60</color>
     <color name="wheat">#f5deb3</color>
+    <color name="DarkColor">#383838</color>
 
 
 </resources>

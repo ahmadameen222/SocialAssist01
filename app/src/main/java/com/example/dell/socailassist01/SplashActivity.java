@@ -47,12 +47,12 @@ public class SplashActivity extends AwesomeSplash {
         configSplash.setPathSplashStrokeSize(3); //I advise value be <5
         configSplash.setPathSplashStrokeColor(R.color.strokeColor); //any color you want form colors.xml
         configSplash.setAnimPathFillingDuration(5000);
-        configSplash.setPathSplashFillColor(R.color.wheat); //path object filling color
+        configSplash.setPathSplashFillColor(R.color.DarkColor); //path object filling color
 
 
-        //Customize Title
+        //Customize TitleDarkColor
         configSplash.setTitleSplash("SOCIAL ASSIST");
-        configSplash.setTitleTextColor(R.color.wheat);
+        configSplash.setTitleTextColor(R.color.DarkColor);
         configSplash.setTitleTextSize(20f); //float value
         configSplash.setAnimTitleDuration(2000);
         configSplash.setAnimTitleTechnique(Techniques.FlipInX);
@@ -65,6 +65,7 @@ public class SplashActivity extends AwesomeSplash {
 
         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
 
     }
 }
