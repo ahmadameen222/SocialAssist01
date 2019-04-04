@@ -29,12 +29,12 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="240dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:contentDescription="--"
-            android:src="@drawable/logothree"
+            android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
             android:drawableBottom="@drawable/ic_action_drawer"
             android:fontFamily="@font/arizonia"
             android:gravity="bottom|center"
-            android:text="Who You Are?"
+            android:text="Sign In As"
             android:textSize="25sp" />
 
 
