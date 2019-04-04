@@ -1,5 +1,6 @@
 package com.example.dell.socailassist01;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
+    private ProgressDialog nDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +60,22 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     final String email = mEmail.getText().toString();
                     final String password = mPassword.getText().toString();
+
+                    nDialog = new ProgressDialog(CustomerLoginActivity.this);
+                    nDialog.setMessage("Loading..");
+                    nDialog.setTitle("Sending Your Data...");
+                    nDialog.setIndeterminate(false);
+                    nDialog.setCancelable(true);
+                    nDialog.show();
+
                     mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
                                 Toast.makeText(CustomerLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
+                                nDialog.dismiss();
                             }else{
+                                nDialog.dismiss();
                                 String user_id = mAuth.getCurrentUser().getUid();
                                 DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
                                 current_user_db.setValue(true);
@@ -78,11 +90,20 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     final String email = mEmail.getText().toString();
                     final String password = mPassword.getText().toString();
+
+                    nDialog = new ProgressDialog(CustomerLoginActivity.this);
+                    nDialog.setMessage("Loading..");
+                    nDialog.setTitle("Fetching Your Data...");
+                    nDialog.setIndeterminate(false);
+                    nDialog.setCancelable(true);
+                    nDialog.show();
+
                     mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
                                 Toast.makeText(CustomerLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                                nDialog.dismiss();
                             }
                         }
                     });

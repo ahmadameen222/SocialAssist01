@@ -54,7 +54,8 @@
         <activity android:name=".CustomerSettingsActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".HistorySingleActivity" />
-        <activity android:name=".DriverSettingsActivity"></activity>
+        <activity android:name=".DriverSettingsActivity" />
+        <activity android:name=".CarFixLoginActivity"></activity>
     </application>
 
 </manifest>

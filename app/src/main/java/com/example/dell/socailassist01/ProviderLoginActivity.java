@@ -29,6 +29,7 @@ public class ProviderLoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(ProviderLoginActivity.this, DriverLoginActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_left);
 
             }
         });
@@ -37,8 +38,9 @@ public class ProviderLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-            //    Intent intent = new Intent(ProviderLoginActivity.this, RegisterServiceProviderCarFixAcitivity.class);
-            //    startActivity(intent);
+                Intent intent = new Intent(ProviderLoginActivity.this, CarFixLoginActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_left);
 
             }
         });
