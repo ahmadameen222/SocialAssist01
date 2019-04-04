@@ -169,9 +169,9 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         mSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(DriverMapActivity.this, DriverSettingsActivity.class);
-                //startActivity(intent);
-                //return;
+                Intent intent = new Intent(DriverMapActivity.this, DriverSettingsActivity.class);
+                startActivity(intent);
+                return;
             }
         });
         mHistory.setOnClickListener(new View.OnClickListener() {

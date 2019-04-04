@@ -38,6 +38,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".ProviderLoginActivity" />
         <activity android:name=".CustomerLoginActivity" />
@@ -50,7 +53,8 @@
             android:label="@string/title_activity_driver_map" />
         <activity android:name=".CustomerSettingsActivity" />
         <activity android:name=".HistoryActivity" />
-        <activity android:name=".HistorySingleActivity"></activity>
+        <activity android:name=".HistorySingleActivity" />
+        <activity android:name=".DriverSettingsActivity"></activity>
     </application>
 
 </manifest>
