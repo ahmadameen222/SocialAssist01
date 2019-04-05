@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout register_layout, signin_layout, s_r_layout, drawer_layout;
     private TextView drawer_tv;
-    private ImageView customer_img, taxi_img;
+    private ImageView customer_img, taxi_img, image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         customer_img = (ImageView)findViewById(R.id.customer_img);
         taxi_img = (ImageView)findViewById(R.id.taxi_img);
+        image = (ImageView)findViewById(R.id.image);
+
 
 
         s_r_layout = (LinearLayout)findViewById(R.id.s_r_layout);

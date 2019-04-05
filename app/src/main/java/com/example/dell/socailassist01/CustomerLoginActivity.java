@@ -43,6 +43,8 @@ public class CustomerLoginActivity extends AppCompatActivity {
                     if(user!=null){
                         Intent intent = new Intent(CustomerLoginActivity.this, CustomerMapActivity.class);
                         startActivity(intent);
+
+                        overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
                         finish();
                         return;
                     }

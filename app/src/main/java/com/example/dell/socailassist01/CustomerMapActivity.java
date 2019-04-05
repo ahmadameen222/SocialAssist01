@@ -146,6 +146,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(CustomerMapActivity.this, MainActivity.class);
                 startActivity(intent);
+
+                overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
                 finish();
                 return;
             }
@@ -192,6 +194,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             public void onClick(View v) {
                 Intent intent = new Intent(CustomerMapActivity.this, CustomerSettingsActivity.class);
                 startActivity(intent);
+
+                overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
                 return;
             }
         });
@@ -202,7 +206,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                Intent intent = new Intent(CustomerMapActivity.this, HistoryActivity.class);
                intent.putExtra("customerOrDriver", "Customers");
                startActivity(intent);
-               return;
+
+                overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
+                return;
             }
         });
 
@@ -578,7 +584,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
 
         GeoFire geoFire = new GeoFire(driverLocation);
-        GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(mLastLocation.getLongitude(), mLastLocation.getLatitude()), 999999999);
+//      GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(mLastLocation.getLongitude(), mLastLocation.getLatitude()), 999999999);
+        GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()), 999999999);
 
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override

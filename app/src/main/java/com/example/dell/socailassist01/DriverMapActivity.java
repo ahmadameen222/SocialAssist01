@@ -162,6 +162,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(DriverMapActivity.this, MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
                 finish();
                 return;
             }
@@ -171,6 +172,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             public void onClick(View v) {
                 Intent intent = new Intent(DriverMapActivity.this, DriverSettingsActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
                 return;
             }
         });
@@ -179,6 +181,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             public void onClick(View v) {
                 Intent intent = new Intent(DriverMapActivity.this, HistoryActivity.class);
                 intent.putExtra("customerOrDriver", "Drivers");
+                overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
                 startActivity(intent);
                 return;
             }

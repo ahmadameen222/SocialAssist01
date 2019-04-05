@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DriverLoginActivity extends AppCompatActivity {
+public class PlumberLoginActivity extends AppCompatActivity {
     private EditText mEmail, mPassword;
     private Button mLogin, mRegistration;
 
@@ -28,7 +28,7 @@ public class DriverLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver_login);
+        setContentView(R.layout.activity_plumber_login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -37,10 +37,8 @@ public class DriverLoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent intent = new Intent(DriverLoginActivity.this, DriverMapActivity.class);
+                    Intent intent = new Intent(PlumberLoginActivity.this, DriverMapActivity.class);
                     startActivity(intent);
-
-                    overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
                     finish();
                     return;
                 }
@@ -60,7 +58,7 @@ public class DriverLoginActivity extends AppCompatActivity {
                 final String password = mPassword.getText().toString();
 
 
-                nDialog = new ProgressDialog(DriverLoginActivity.this);
+                nDialog = new ProgressDialog(PlumberLoginActivity.this);
                 nDialog.setMessage("Loading..");
                 nDialog.setTitle("Sending Your Data...");
                 nDialog.setIndeterminate(false);
@@ -68,16 +66,16 @@ public class DriverLoginActivity extends AppCompatActivity {
                 nDialog.show();
 
 
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(DriverLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(PlumberLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlumberLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
                             nDialog.dismiss();
                         }else{
                             nDialog.dismiss();
                             String user_id = mAuth.getCurrentUser().getUid();
-                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(user_id).child("name");
+                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Plumber").child(user_id).child("name");
                             current_user_db.setValue(email);
                         }
                     }
@@ -92,18 +90,18 @@ public class DriverLoginActivity extends AppCompatActivity {
                 final String password = mPassword.getText().toString();
 
 
-                nDialog = new ProgressDialog(DriverLoginActivity.this);
+                nDialog = new ProgressDialog(PlumberLoginActivity.this);
                 nDialog.setMessage("Loading..");
                 nDialog.setTitle("Fetching Your Data...");
                 nDialog.setIndeterminate(false);
                 nDialog.setCancelable(true);
                 nDialog.show();
 
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(DriverLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(PlumberLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlumberLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
                             nDialog.dismiss();
                         }
                     }
