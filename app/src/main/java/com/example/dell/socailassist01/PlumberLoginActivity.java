@@ -37,7 +37,7 @@ public class PlumberLoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent intent = new Intent(PlumberLoginActivity.this, DriverMapActivity.class);
+                    Intent intent = new Intent(PlumberLoginActivity.this, UserMapActivity.class);
                     startActivity(intent);
                     finish();
                     return;

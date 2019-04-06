@@ -29,7 +29,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private LinearLayout register_layout, signin_layout, s_r_layout, drawer_layout;
     private TextView drawer_tv;
     private ImageView customer_img, taxi_img, image;
@@ -72,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, ProviderLoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
                 startActivity(intent);
+                //overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
 
             }
         });
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, CustomerLoginActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
 
             }
         });
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, CustomerLoginActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
 
             }
         });
@@ -102,8 +104,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this, ProviderLoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
                 startActivity(intent);
+                //overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
 
             }
         });
@@ -111,5 +114,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+
+
+
+
 
 

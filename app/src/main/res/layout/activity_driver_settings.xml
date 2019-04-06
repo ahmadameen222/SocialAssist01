@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bridge"
-    tools:context=".DriverSettingsActivity"
     android:orientation="vertical"
-    android:padding="20sp">
+    android:padding="20sp"
+    tools:context=".UserSettingsActivity">
     <!--<ImageView
         android:layout_width="100sp"
         android:layout_height="100sp"
@@ -71,8 +71,6 @@
 -->
 
 
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -110,7 +108,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#f9d7db" />
-
 
 
             <EditText
@@ -152,37 +149,139 @@
                 android:layout_height="1dp"
                 android:background="#f9d7db" />
 
-            <RadioGroup
+            <LinearLayout
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/radioGroup"
-                android:padding="20dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:textColor="#FFFF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UberX"
-                    android:padding="3dp"
-                    android:id="@+id/UberX"/>
-                <RadioButton
-                    android:textColor="#FFFF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UberBlack"
-                    android:padding="3dp"
-                    android:id="@+id/UberBlack"/>
-                <RadioButton
-                    android:textColor="#FFFF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UberXl"
-                    android:padding="3dp"
-                    android:id="@+id/UberXl"/>
-            </RadioGroup>
+                android:orientation="vertical"
+                android:background="@drawable/buttonmap2"
+                >
 
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/carme"
+                    android:text="Please Choose Your Profession:"
+                    android:textColor="#ffff"
+                    android:textSize="16dp" />
+
+
+                <HorizontalScrollView
+                    android:id="@+id/hour_scroll_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:scrollbars="horizontal">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <!--
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:gravity="center"
+                                                android:orientation="horizontal">
+                        -->
+
+                        <RadioButton
+                            android:id="@+id/UberX"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+                            android:text="Driver"
+                            android:textColor="#FFFF" />
+
+                        <RadioButton
+                            android:id="@+id/UberBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+                            android:text="Plumber"
+                            android:textColor="#FFFF" />
+
+                        <RadioButton
+                            android:id="@+id/UberXl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+                            android:text="Electrician"
+                            android:textColor="#FFFF" />
+                        <!--
+
+                                        </RadioGroup>
+                                            &lt;!&ndash;
+
+                                                                </LinearLayout>
+
+                                                                <LinearLayout
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:layout_gravity="center"
+                                                                    android:gravity="center"
+                                                                    android:layout_marginTop="20dp"
+                                                                    android:orientation="horizontal">
+                                            &ndash;&gt;
+                                    <RadioGroup
+                                        android:id="@+id/radioGroup1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:padding="20dp">
+                        -->
+
+                        <RadioButton
+                            android:id="@+id/CarFixerRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+                            android:text="CarFixer"
+                            android:textColor="#FFFF" />
+
+                        <RadioButton
+                            android:id="@+id/InsRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="3dp"
+                            android:text="Insurance\nAgnet"
+                            android:textColor="#FFFF" />
+
+                        <RadioButton
+                            android:id="@+id/TeleRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="3dp"
+                            android:text="Telephone\nFixer"
+                            android:textColor="#FFFF" />
+                        <!--</LinearLayout>
+
+                    </LinearLayout>
+        -->
+                    </RadioGroup>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/confirm"
@@ -227,9 +326,7 @@
 
 
         </LinearLayout>
+
     </ScrollView>
-
-
-
 
 </LinearLayout>

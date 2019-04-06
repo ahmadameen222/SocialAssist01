@@ -27,7 +27,7 @@ public class ProviderLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(ProviderLoginActivity.this, DriverLoginActivity.class);
+                Intent intent = new Intent(ProviderLoginActivity.this, UserLoginActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_left);
 

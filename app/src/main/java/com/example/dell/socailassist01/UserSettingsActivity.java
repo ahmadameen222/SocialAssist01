@@ -38,7 +38,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DriverSettingsActivity extends AppCompatActivity {
+public class UserSettingsActivity extends AppCompatActivity {
 
     private EditText mNameField, mPhoneField, mCarField;
 

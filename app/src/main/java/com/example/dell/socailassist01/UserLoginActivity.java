@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DriverLoginActivity extends AppCompatActivity {
+public class UserLoginActivity extends AppCompatActivity {
     private EditText mEmail, mPassword;
     private Button mLogin, mRegistration;
 
@@ -28,7 +28,7 @@ public class DriverLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver_login);
+        setContentView(R.layout.activity_user_login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -37,7 +37,7 @@ public class DriverLoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent intent = new Intent(DriverLoginActivity.this, DriverMapActivity.class);
+                    Intent intent = new Intent(UserLoginActivity.this, UserMapActivity.class);
                     startActivity(intent);
 
                     overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
@@ -60,7 +60,7 @@ public class DriverLoginActivity extends AppCompatActivity {
                 final String password = mPassword.getText().toString();
 
 
-                nDialog = new ProgressDialog(DriverLoginActivity.this);
+                nDialog = new ProgressDialog(UserLoginActivity.this);
                 nDialog.setMessage("Loading..");
                 nDialog.setTitle("Sending Your Data...");
                 nDialog.setIndeterminate(false);
@@ -68,11 +68,11 @@ public class DriverLoginActivity extends AppCompatActivity {
                 nDialog.show();
 
 
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(DriverLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(UserLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
                             nDialog.dismiss();
                         }else{
                             nDialog.dismiss();
@@ -92,18 +92,18 @@ public class DriverLoginActivity extends AppCompatActivity {
                 final String password = mPassword.getText().toString();
 
 
-                nDialog = new ProgressDialog(DriverLoginActivity.this);
+                nDialog = new ProgressDialog(UserLoginActivity.this);
                 nDialog.setMessage("Loading..");
                 nDialog.setTitle("Fetching Your Data...");
                 nDialog.setIndeterminate(false);
                 nDialog.setCancelable(true);
                 nDialog.show();
 
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(DriverLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(UserLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
                             nDialog.dismiss();
                         }
                     }
