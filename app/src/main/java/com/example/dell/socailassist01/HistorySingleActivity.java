@@ -54,7 +54,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class HistorySingleActivity extends AppCompatActivity implements OnMapReadyCallback, RoutingListener {
-    private String rideId, currentUserId, customerId, driverId, userDriverOrCustomer;
+    private String rideId, currentUserId, customerId, ServiceProviderId, userServiceProviderOrCustomer;
 
     private TextView rideLocation;
     private TextView rideDistance;
@@ -123,15 +123,15 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
                         if (child.getKey().equals("customer")){
                             customerId = child.getValue().toString();
                             if(!customerId.equals(currentUserId)){
-                                userDriverOrCustomer = "Drivers";
+                                userServiceProviderOrCustomer = "ServiceProvider";
                                 getUserInformation("Customers", customerId);
                             }
                         }
-                        if (child.getKey().equals("driver")){
-                            driverId = child.getValue().toString();
-                            if(!driverId.equals(currentUserId)){
-                                userDriverOrCustomer = "Customers";
-                                getUserInformation("Drivers", driverId);
+                        if (child.getKey().equals("ServiceProvider")){
+                            ServiceProviderId = child.getValue().toString();
+                            if(!ServiceProviderId.equals(currentUserId)){
+                                userServiceProviderOrCustomer = "Customers";
+                                getUserInformation("ServiceProvider", ServiceProviderId);
                                 displayCustomerRelatedObjects();
                             }
                         }
@@ -177,8 +177,8 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 historyRideInfoDb.child("rating").setValue(rating);
-                DatabaseReference mDriverRatingDb = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("rating");
-                mDriverRatingDb.child(rideId).setValue(rating);
+                DatabaseReference mServiceProviderRatingDb = FirebaseDatabase.getInstance().getReference().child("Users").child("ServiceProvider").child(ServiceProviderId).child("rating");
+                mServiceProviderRatingDb.child(rideId).setValue(rating);
             }
         });
         if(customerPaid){
@@ -251,8 +251,8 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
 
 
 
-    private void getUserInformation(String otherUserDriverOrCustomer, String otherUserId) {
-        DatabaseReference mOtherUserDB = FirebaseDatabase.getInstance().getReference().child("Users").child(otherUserDriverOrCustomer).child(otherUserId);
+    private void getUserInformation(String otherUserServiceProviderOrCustomer, String otherUserId) {
+        DatabaseReference mOtherUserDB = FirebaseDatabase.getInstance().getReference().child("Users").child(otherUserServiceProviderOrCustomer).child(otherUserId);
         mOtherUserDB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

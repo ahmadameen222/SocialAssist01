@@ -57,7 +57,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/userImage"
-                android:src="@mipmap/ic_default_user"/>
+                android:layout_marginRight="10dp"
+                android:src="@drawable/customer"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

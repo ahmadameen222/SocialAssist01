@@ -64,7 +64,7 @@ public class UserSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver_settings);
+        setContentView(R.layout.activity_user_settings);
 
 
         mNameField = (EditText) findViewById(R.id.name);
@@ -76,11 +76,14 @@ public class UserSettingsActivity extends AppCompatActivity {
         mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
         mBack = (Button) findViewById(R.id.back);
+
         mConfirm = (Button) findViewById(R.id.confirm);
 
         mAuth = FirebaseAuth.getInstance();
+
         userID = mAuth.getCurrentUser().getUid();
-        mDriverDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userID);
+
+        mDriverDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("ServiceProvider").child(userID);
 
         getUserInfo();
 
@@ -129,14 +132,23 @@ public class UserSettingsActivity extends AppCompatActivity {
                     if(map.get("service")!=null){
                         mService = map.get("service").toString();
                         switch (mService){
-                            case"UberX":
+                            case"Driver":
                                 mRadioGroup.check(R.id.UberX);
                                 break;
-                            case"UberBlack":
+                            case"Plumber":
                                 mRadioGroup.check(R.id.UberBlack);
                                 break;
-                            case"UberXl":
+                            case"Electrician":
                                 mRadioGroup.check(R.id.UberXl);
+                                break;
+                            case"CarFixer":
+                                mRadioGroup.check(R.id.CarFixerRB);
+                                break;
+                            case"Insurance":
+                                mRadioGroup.check(R.id.InsRB);
+                                break;
+                            case"Telephone Fixer":
+                                mRadioGroup.check(R.id.TeleRB);
                                 break;
                         }
                     }

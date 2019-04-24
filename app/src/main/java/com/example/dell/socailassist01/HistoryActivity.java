@@ -41,7 +41,7 @@ import okhttp3.Response;
 
 
 public class HistoryActivity extends AppCompatActivity {
-    private String customerOrDriver, userId;
+    private String customerOrServiceProvider, userId;
 
     private RecyclerView mHistoryRecyclerView;
     private RecyclerView.Adapter mHistoryAdapter;
@@ -73,11 +73,11 @@ public class HistoryActivity extends AppCompatActivity {
         mHistoryRecyclerView.setAdapter(mHistoryAdapter);
 
 
-        customerOrDriver = getIntent().getExtras().getString("customerOrDriver");
+        customerOrServiceProvider = getIntent().getExtras().getString("customerOrServiceProvider");
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         getUserHistoryIds();
 
-        if(customerOrDriver.equals("Drivers")){
+        if(customerOrServiceProvider.equals("ServiceProvider")){
             mBalance.setVisibility(View.VISIBLE);
             mPayout.setVisibility(View.VISIBLE);
             mPayoutEmail.setVisibility(View.VISIBLE);
@@ -92,7 +92,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private void getUserHistoryIds() {
-        DatabaseReference userHistoryDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(customerOrDriver).child(userId).child("history");
+        DatabaseReference userHistoryDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(customerOrServiceProvider).child(userId).child("history");
         userHistoryDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -124,7 +124,7 @@ public class HistoryActivity extends AppCompatActivity {
                         timestamp = Long.valueOf(dataSnapshot.child("timestamp").getValue().toString());
                     }
 
-                    if(dataSnapshot.child("customerPaid").getValue() != null && dataSnapshot.child("driverPaidOut").getValue() == null){
+                    if(dataSnapshot.child("customerPaid").getValue() != null && dataSnapshot.child("ServiceProviderPaidOut").getValue() == null){
                         if(dataSnapshot.child("distance").getValue() != null){
                             ridePrice = Double.valueOf(dataSnapshot.child("price").getValue().toString());
                             Balance += ridePrice;

@@ -77,7 +77,7 @@ public class UserLoginActivity extends AppCompatActivity {
                         }else{
                             nDialog.dismiss();
                             String user_id = mAuth.getCurrentUser().getUid();
-                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(user_id).child("name");
+                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("ServiceProvider").child(user_id).child("name");
                             current_user_db.setValue(email);
                         }
                     }

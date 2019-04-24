@@ -113,10 +113,12 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         mWorkingSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+
                 if (isChecked){
-                    connectDriver();
+                    connectserviceprovider();
                 }else{
-                    disconnectDriver();
+                    disconnectserviceprovider();
                 }
             }
         });
@@ -135,7 +137,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
                         if(destinationLatLng.latitude!=0.0 && destinationLatLng.longitude!=0.0){
                             getRouteToMarker(destinationLatLng);
                         }
-                        mRideStatus.setText("drive completed");
+                        mRideStatus.setText("Service Provider's Work Completed!");
 
                         break;
                     case 2:
@@ -151,7 +153,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
             public void onClick(View v) {
                 isLoggingOut = true;
 
-                disconnectDriver();
+                disconnectserviceprovider();
 
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(UserMapActivity.this, MainActivity.class);
@@ -174,7 +176,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserMapActivity.this, HistoryActivity.class);
-                intent.putExtra("customerOrDriver", "Drivers");
+                intent.putExtra("customerOrServiceProvider", "ServiceProvider");
                 overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation);
                 startActivity(intent);
                 return;
@@ -184,8 +186,8 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
     }
 
     private void getAssignedCustomer(){
-        String driverId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest").child("customerRideId");
+        String serviceproviderId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("ServiceProvider").child(serviceproviderId).child("customerRequest").child("customerRideId");
         assignedCustomerRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -249,8 +251,8 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
     }
 
     private void getAssignedCustomerDestination(){
-        String driverId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest");
+        String serviceproviderId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("ServiceProvider").child(serviceproviderId).child("customerRequest");
         assignedCustomerRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -316,8 +318,8 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         erasePolylines();
 
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId).child("customerRequest");
-        driverRef.removeValue();
+        DatabaseReference serviceproviderRef = FirebaseDatabase.getInstance().getReference().child("Users").child("ServiceProvider").child(userId).child("customerRequest");
+        serviceproviderRef.removeValue();
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
         GeoFire geoFire = new GeoFire(ref);
@@ -340,15 +342,15 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
 
     private void recordRide(){
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId).child("history");
+        DatabaseReference serviceproviderRef = FirebaseDatabase.getInstance().getReference().child("Users").child("ServiceProvider").child(userId).child("history");
         DatabaseReference customerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(customerId).child("history");
         DatabaseReference historyRef = FirebaseDatabase.getInstance().getReference().child("history");
         String requestId = historyRef.push().getKey();
-        driverRef.child(requestId).setValue(true);
+        serviceproviderRef.child(requestId).setValue(true);
         customerRef.child(requestId).setValue(true);
 
         HashMap map = new HashMap();
-        map.put("driver", userId);
+        map.put("serviceprovider", userId);
         map.put("customer", customerId);
         map.put("rating", 0);
         map.put("timestamp", getCurrentTimestamp());
@@ -403,8 +405,8 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
                     mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    DatabaseReference refAvailable = FirebaseDatabase.getInstance().getReference("driversAvailable");
-                    DatabaseReference refWorking = FirebaseDatabase.getInstance().getReference("driversWorking");
+                    DatabaseReference refAvailable = FirebaseDatabase.getInstance().getReference("ServiceProvidersAvailable");
+                    DatabaseReference refWorking = FirebaseDatabase.getInstance().getReference("ServiceProvidersWorking");
                     GeoFire geoFireAvailable = new GeoFire(refAvailable);
                     GeoFire geoFireWorking = new GeoFire(refWorking);
 
@@ -467,18 +469,18 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
 
 
 
-    private void connectDriver(){
+    private void connectserviceprovider(){
         checkLocationPermission();
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
         mMap.setMyLocationEnabled(true);
     }
 
-    private void disconnectDriver(){
+    private void disconnectserviceprovider(){
         if(mFusedLocationClient != null){
             mFusedLocationClient.removeLocationUpdates(mLocationCallback);
         }
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("driversAvailable");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("ServiceProvidersAvailable");
 
         GeoFire geoFire = new GeoFire(ref);
         geoFire.removeLocation(userId);

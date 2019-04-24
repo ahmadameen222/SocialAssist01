@@ -150,19 +150,18 @@
                 android:background="#f9d7db" />
 
             <LinearLayout
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/buttonmap2"
-                >
+                android:orientation="vertical">
 
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/carme"
                     android:text="Please Choose Your Profession:"
                     android:textColor="#ffff"
@@ -262,7 +261,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="3dp"
-                            android:text="Insurance\nAgnet"
+                            android:text="Insurance"
                             android:textColor="#FFFF" />
 
                         <RadioButton
@@ -271,7 +270,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="3dp"
-                            android:text="Telephone\nFixer"
+                            android:text="Telephone Fixer"
                             android:textColor="#FFFF" />
                         <!--</LinearLayout>
 
@@ -288,10 +287,10 @@
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="20dp"
                 android:background="#fff"
                 android:clickable="true"
-                android:padding="16dp"
+                android:padding="10dp"
                 android:text="Confirm"
                 android:textAllCaps="false"
                 android:textColor="#f16f71"
@@ -303,10 +302,10 @@
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:background="#f08b98"
                 android:clickable="true"
-                android:padding="16dp"
+                android:padding="10dp"
                 android:text="Back"
                 android:textAllCaps="false"
                 android:textColor="#fff"
