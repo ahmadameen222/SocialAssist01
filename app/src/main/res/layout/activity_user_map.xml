@@ -63,7 +63,7 @@
         android:id="@+id/customerInfo"
         android:layout_gravity="bottom"
         android:orientation="vertical"
-        android:background="@android:color/white"
+        android:background="@drawable/buttonmap2"
         android:visibility="gone"
         android:elevation="1dp"
         android:translationZ="1dp">

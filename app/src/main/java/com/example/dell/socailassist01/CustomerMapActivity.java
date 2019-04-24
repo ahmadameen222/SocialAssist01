@@ -24,6 +24,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -81,6 +82,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private GoogleMap mMap;
     Location mLastLocation;
     LocationRequest mLocationRequest;
+    HorizontalScrollView hour_scroll_view;
 
     private FusedLocationProviderClient mFusedLocationClient;
 
@@ -138,6 +140,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mSettings = (Button) findViewById(R.id.settings);
         mHistory = (Button) findViewById(R.id.history);
 
+        hour_scroll_view = (HorizontalScrollView)findViewById(R.id.hour_scroll_view);
+
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,6 +157,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                hour_scroll_view.setVisibility(View.GONE);
 
                 if (requestBol) {
                     endRide();

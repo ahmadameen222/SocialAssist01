@@ -73,9 +73,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@android:color/white"
+            android:background="@drawable/buttonmap1"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="gone"
+            >
 
             <ImageView
                 android:id="@+id/driverProfileImage"
@@ -130,11 +131,11 @@
 
             <HorizontalScrollView
                 android:id="@+id/hour_scroll_view"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fillViewport="true"
-                android:scrollbars="horizontal"
-                >
+                android:scrollbars="horizontal">
 
                 <RadioGroup
                     android:id="@+id/radioGroup"
