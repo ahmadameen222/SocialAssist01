@@ -2,6 +2,7 @@ package com.example.dell.socailassist01;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -62,7 +63,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
     private GoogleMap mMap;
     Location mLastLocation;
     LocationRequest mLocationRequest;
-
+    TextView profession_tv;
     private FusedLocationProviderClient mFusedLocationClient;
 
 
@@ -93,6 +94,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         polylines = new ArrayList<>();
 
+        profession_tv = (TextView)findViewById(R.id.profession_tv);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -116,8 +118,10 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
 
 
                 if (isChecked){
+                    profession_tv.setVisibility(View.GONE);
                     connectserviceprovider();
                 }else{
+                    profession_tv.setVisibility(View.VISIBLE);
                     disconnectserviceprovider();
                 }
             }
@@ -127,9 +131,79 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         mLogout = (Button) findViewById(R.id.logout);
         mRideStatus = (Button) findViewById(R.id.rideStatus);
         mHistory = (Button) findViewById(R.id.history);
+
+
+
         mRideStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+/*
+                AlertDialog.Builder builder
+                        = new AlertDialog
+                        .Builder(UserMapActivity.this);
+
+                // Set the message show for the Alert time
+                builder.setMessage("How Do You Want to Pay?");
+
+                // Set Alert Title
+                builder.setTitle("Payment!");
+
+                // Set Cancelable false
+                // for when the user clicks on the outside
+                // the Dialog Box then it will remain show
+                builder.setCancelable(false);
+
+                // Set the positive button with yes name
+                // OnClickListener method is use of
+                // DialogInterface interface.
+
+                builder
+                        .setPositiveButton(
+                                "POINTS",
+                                new DialogInterface
+                                        .OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which)
+                                    {
+
+                                        // When the user click yes button
+                                        // then app will close
+                                           Toast.makeText(getApplicationContext(),"POINTS DEDUCTED FROM YOUR ACCOUNT!",Toast.LENGTH_SHORT).show();
+                                        //finish();
+                                    }
+                                });
+
+                // Set the Negative button with No name
+                // OnClickListener method is use
+                // of DialogInterface interface.
+                builder
+                        .setNegativeButton(
+                                "CASH",
+                                new DialogInterface
+                                        .OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which)
+                                    {
+
+                                        // If user click no
+                                        // then dialog box is canceled.
+                                        dialog.cancel();
+                                    }
+                                });
+
+                // Create the Alert dialog
+                AlertDialog alertDialog = builder.create();
+
+                // Show the Alert Dialog box
+                alertDialog.show();
+*/
+
+
                 switch(status){
                     case 1:
                         status=2;
@@ -137,7 +211,9 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
                         if(destinationLatLng.latitude!=0.0 && destinationLatLng.longitude!=0.0){
                             getRouteToMarker(destinationLatLng);
                         }
+
                         mRideStatus.setText("Service Provider's Work Completed!");
+
 
                         break;
                     case 2:
@@ -534,5 +610,6 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         }
         polylines.clear();
     }
+
 
 }

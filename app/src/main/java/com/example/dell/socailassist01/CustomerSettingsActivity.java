@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -48,6 +49,7 @@ public class CustomerSettingsActivity extends AppCompatActivity {
     private String mName;
     private String mPhone;
     private String mProfileImageUrl;
+    private TextView reward_tv;
 
     private Uri resultUri;
 
@@ -59,6 +61,8 @@ public class CustomerSettingsActivity extends AppCompatActivity {
 
         mNameField = (EditText) findViewById(R.id.name);
         mPhoneField = (EditText) findViewById(R.id.phone);
+
+        reward_tv = (TextView) findViewById(R.id.reward_tv);
 
         mProfileImage = (ImageView) findViewById(R.id.profileImage);
 
@@ -171,7 +175,6 @@ public class CustomerSettingsActivity extends AppCompatActivity {
         }else{
             finish();
         }
-
     }
 
     @Override

@@ -47,12 +47,29 @@
                 android:id="@+id/settings"
                 android:text="Settings"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/profession_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note: First Choose desired Profession in Settings!"
+            android:background="@drawable/buttonmap3"
+            android:layout_margin="5dp"
+            android:textColor="#FFFF"
+            android:paddingTop="5dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="visible"
+            android:paddingBottom="5dp"
+            />
+
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Working"
             android:layout_margin="10sp"
             android:id="@+id/workingSwitch"/>
+
     </LinearLayout>
 
 
